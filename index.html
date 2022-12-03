@@ -129,31 +129,35 @@
         float: left;
         width: 328px;
         height: 210px;
-        border-bottom: 1px solid black;
-    }
-
+        border-bottom: 1px solid black;}
     #q4answer2{
         border-bottom: 1px solid black;
         float: none;
         margin-top: 210px;
         width: 328px;
-        height: 210px;
-    }
-
+        height: 210px;}
     #q4a1p1{
         border-right: 1px solid black;
         float: left;
         line-height: 210px;
         height: 210px;
-        width: 163px;
-    }
+        width: 163px;}
     #q4a1p2{
         float: left;
         line-height: 210px;
         height: 210px;
-        width: 164px;
-    }
+        width: 164px;}
 
+    #q5answer1{
+        float: left;
+        border-bottom: 1px solid black;
+        width: 328px;
+        height: 210px;}
+    #q5answer2{
+        float: none;
+        margin-top: 210px;
+        width: 328px;
+        height: 210px;}
 </style>
 
 
@@ -161,7 +165,8 @@
     var page_no=1;
     function page_cont(){
         page_no++;
-        if(page_no <= 0 || page_no >= 4)
+        console.log(page_no);
+        if(page_no <= 0 || page_no >= 6)
         {
             page_no = 1
         }
@@ -171,23 +176,46 @@
             document.getElementById('question-box1').style.display = 'block'
             document.getElementById('question-box2').style.display = 'none';
             document.getElementById('question-box3').style.display = 'none';
+            document.getElementById('question-box4').style.display = 'none';
+            document.getElementById('question-box5').style.display = 'none';
         }
         else if(page_no == 2)
         {
             document.getElementById('question-box1').style.display = 'none'
-            document.getElementById('question-box2').style.display = 'block';
+            document.getElementById('question-box2').style.display = 'none';
             document.getElementById('question-box3').style.display = 'none';
+            document.getElementById('question-box4').style.display = 'block';
+            document.getElementById('question-box5').style.display = 'none';
         }
         else if(page_no == 3)
         {
             document.getElementById('question-box1').style.display = 'none'
+            document.getElementById('question-box2').style.display = 'block';
+            document.getElementById('question-box3').style.display = 'none';
+            document.getElementById('question-box4').style.display = 'none';
+            document.getElementById('question-box5').style.display = 'none';
+        }
+        else if(page_no == 4)
+        {
+            document.getElementById('question-box1').style.display = 'none'
             document.getElementById('question-box2').style.display = 'none';
             document.getElementById('question-box3').style.display = 'block';
+            document.getElementById('question-box4').style.display = 'none';
+            document.getElementById('question-box5').style.display = 'none';
+        }
+        else if(page_no == 5)
+        {
+            document.getElementById('question-box1').style.display = 'none'
+            document.getElementById('question-box2').style.display = 'none';
+            document.getElementById('question-box3').style.display = 'none';
+            document.getElementById('question-box4').style.display = 'none';
+            document.getElementById('question-box5').style.display = 'block';
         }
     }
     function page_back(){
         page_no--;
-        if(page_no <= 0 || page_no >= 4)
+        console.log(page_no);
+        if(page_no <= 0 || page_no >= 6)
         {
             page_no = 1
         }
@@ -197,18 +225,40 @@
             document.getElementById('question-box1').style.display = 'block'
             document.getElementById('question-box2').style.display = 'none';
             document.getElementById('question-box3').style.display = 'none';
+            document.getElementById('question-box4').style.display = 'none';
+            document.getElementById('question-box5').style.display = 'none';
         }
         else if(page_no == 2)
         {
             document.getElementById('question-box1').style.display = 'none'
-            document.getElementById('question-box2').style.display = 'block';
+            document.getElementById('question-box2').style.display = 'none';
             document.getElementById('question-box3').style.display = 'none';
+            document.getElementById('question-box4').style.display = 'block';
+            document.getElementById('question-box5').style.display = 'none';
         }
         else if(page_no == 3)
         {
             document.getElementById('question-box1').style.display = 'none'
+            document.getElementById('question-box2').style.display = 'block';
+            document.getElementById('question-box3').style.display = 'none';
+            document.getElementById('question-box4').style.display = 'none';
+            document.getElementById('question-box5').style.display = 'none';
+        }
+        else if(page_no == 4)
+        {
+            document.getElementById('question-box1').style.display = 'none'
             document.getElementById('question-box2').style.display = 'none';
             document.getElementById('question-box3').style.display = 'block';
+            document.getElementById('question-box4').style.display = 'none';
+            document.getElementById('question-box5').style.display = 'none';
+        }
+        else if(page_no == 5)
+        {
+            document.getElementById('question-box1').style.display = 'none'
+            document.getElementById('question-box2').style.display = 'none';
+            document.getElementById('question-box3').style.display = 'none';
+            document.getElementById('question-box4').style.display = 'none';
+            document.getElementById('question-box5').style.display = 'block';
         }
         
     }
@@ -290,6 +340,26 @@
     {
         document.getElementById('q4a1p1').style.backgroundColor = 'rgb(0, 96, 255)';
         document.getElementById('q4a1p1').style.color = 'white';
+        document.getElementById('q4a1p2').style.backgroundColor = 'white';
+        document.getElementById('q4a1p2').style.color = 'black';
+        document.getElementById('q4answer2').style.display = 'block';
+    }
+    function q4a1p2_click()
+    {
+        document.getElementById('q4a1p1').style.backgroundColor = 'white';
+        document.getElementById('q4a1p1').style.color = 'black';
+        document.getElementById('q4a1p2').style.backgroundColor = 'rgb(0, 96, 255)';
+        document.getElementById('q4a1p2').style.color = 'white';
+        document.getElementById('q4answer2').style.display = 'none'
+    }
+
+    function q5answer1_click(){
+        document.getElementById('q5answer1_para').style.textDecoration = 'underline';
+        document.getElementById('q5answer2_para').style.textDecoration = 'none';
+    }
+    function q5answer2_click(){
+        document.getElementById('q5answer2_para').style.textDecoration = 'underline';
+        document.getElementById('q5answer1_para').style.textDecoration = 'none';
     }
 </script>
 
@@ -328,9 +398,9 @@
     </div>
 
     <!-- HAVE YOU PREVIOUSLY TAKEN APPOINTMENT -->
-    <div class="question-box" id="question-box4">
+    <div class="question-box" id="question-box4" style="border: 1px solid black; display: none;">
 
-        <div class="question">
+        <div class="question" style="border-right: 1px solid black;">
             <p><strong>HAVE YOU VISITED HOSPITAL BEFORE?</strong></p>
         </div>
 
@@ -345,8 +415,10 @@
                 </div>
             </div>
 
-            <div id="q4answer2">
-                <p><strong>Enter Your ID: </strong></p>
+            <div id="q4answer2" style="display: none;">
+                <br>
+                <p><strong>Enter Your ID: </strong></p><br>
+                <input type="text" class="personal_details" id="pid" style="width: 50px;" maxlength="4">
             </div>
         </div>
     </div>
@@ -415,7 +487,23 @@
         </div>
     </div>
 
+    <!-- Syntoms and More info -->
+    <div class="question-box" id="question-box5" style="display: none;">
+        <div class="question">
+            <p><strong>More About Your Disease: </strong></p>
+        </div>
 
+        <div class="answers">
+            <div id="q5answer1" onclick="q5answer1_click()">
+                <p id="q5answer1_para"><strong>Enter your Syntoms(any 3):</strong></p><br>
+                <textarea cols="35" rows="10" style="border: 1px solid black; resize: none; font-weight: bold;" class="personal-details"></textarea>
+            </div>
+            <div id="q5answer2" onclick="q5answer2_click()">
+                <p id="q5answer2_para"><strong>Describe your Disease:</strong></p><br>
+                <textarea cols="35" rows="10" style="border: 1px solid black; resize: none; font-weight: bold;" class="personal-details"></textarea>
+            </div>
+        </div>
+    </div>
 
 
 
