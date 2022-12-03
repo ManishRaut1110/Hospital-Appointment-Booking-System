@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+</head>
+
+
+<style>
+    * {
+        margin: 0px;
+        border: 0px;
+        font-family: 'Roboto', sans-serif;}
+
+    body{
+        background-color: rgb(209, 209, 209);}
+    #title{
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;}
+    #title-main{
+        font-size: 40px;}
+
+    .question-box{
+        
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 80px;
+        height: 420px;
+        width: 665px;
+        background-color: white;
+        text-align: center;
+        vertical-align: middle;}
+
+    .question{
+        border-bottom: 1px solid black;
+        border-left: 1px solid black;
+        border-top: 1px solid black;
+        float: left;
+        width: 50%;
+        line-height: 420px;}
+
+    .answers{
+        border: 1px solid black;
+        float: left;
+        width: auto; }
+
+    #q1answer1{
+        border-bottom: 1px solid black;
+        float: left;
+        width: 328px;
+        height: 210px;
+        line-height: 210px;
+        text-align: center;}
+    #q1answer2{
+        float: up;
+        margin-top: 210px;
+        width: 328px;
+        height: 210px;
+        line-height: 210px;
+        text-align: center;}
+    
+    #buttons{
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+        width: 660px;
+        height: auto;}
+
+    .bottom_buttons{
+        width: 328px;
+        height: 40px;
+        font-size: 22px;
+        background-color: rgb(209, 209, 209);}
+    
+    #q2answer1{
+        border-bottom: 1px solid black;
+        float: left;
+        width: 328px;
+        height: 104px;
+        text-align: center;}
+    #q2answer2{
+        border-bottom: 1px solid black;
+        float: unset;
+        width: 328px;
+        height: 104px;
+        margin-top: 105px;
+        text-align: center;}
+    #q2answer3{
+        border-bottom: 1px solid black;
+        float: unset;
+        width: 328px;
+        height: 104px;
+        text-align: center;}
+    #q2answer4{
+        float: unset;
+        
+        width: 328px;
+        height: 105px;
+        text-align: center;}
+    
+    .personal_details{
+        width: 80%;
+        padding: 5px;
+        border: 1px solid black;
+        color: black;
+        font-size: 20px;
+        font-weight: bold;}
+
+    #q3answer1{
+        float: left;
+        height: 104px;
+        width: 328px;
+        border-bottom: 1px solid black;}
+    #q3answer2{
+        float: up;
+        margin-top: 104px;
+        height: 104px;
+        width: 328px;
+        border-bottom: 1px solid black;}
+    #q3answer3{
+        float: up;
+        height: 211px;
+        width: 328px;}
+
+    #q4answer1{
+        float: left;
+        width: 328px;
+        height: 210px;
+        border-bottom: 1px solid black;
+    }
+
+    #q4answer2{
+        border-bottom: 1px solid black;
+        float: none;
+        margin-top: 210px;
+        width: 328px;
+        height: 210px;
+    }
+
+    #q4a1p1{
+        border-right: 1px solid black;
+        float: left;
+        line-height: 210px;
+        height: 210px;
+        width: 163px;
+    }
+    #q4a1p2{
+        float: left;
+        line-height: 210px;
+        height: 210px;
+        width: 164px;
+    }
+
+</style>
+
+
+<script type="text/javascript">
+    var page_no=1;
+    function page_cont(){
+        page_no++;
+        if(page_no <= 0 || page_no >= 4)
+        {
+            page_no = 1
+        }
+
+        if(page_no == 1)
+        {
+            document.getElementById('question-box1').style.display = 'block'
+            document.getElementById('question-box2').style.display = 'none';
+            document.getElementById('question-box3').style.display = 'none';
+        }
+        else if(page_no == 2)
+        {
+            document.getElementById('question-box1').style.display = 'none'
+            document.getElementById('question-box2').style.display = 'block';
+            document.getElementById('question-box3').style.display = 'none';
+        }
+        else if(page_no == 3)
+        {
+            document.getElementById('question-box1').style.display = 'none'
+            document.getElementById('question-box2').style.display = 'none';
+            document.getElementById('question-box3').style.display = 'block';
+        }
+    }
+    function page_back(){
+        page_no--;
+        if(page_no <= 0 || page_no >= 4)
+        {
+            page_no = 1
+        }
+
+        if(page_no == 1)
+        {
+            document.getElementById('question-box1').style.display = 'block'
+            document.getElementById('question-box2').style.display = 'none';
+            document.getElementById('question-box3').style.display = 'none';
+        }
+        else if(page_no == 2)
+        {
+            document.getElementById('question-box1').style.display = 'none'
+            document.getElementById('question-box2').style.display = 'block';
+            document.getElementById('question-box3').style.display = 'none';
+        }
+        else if(page_no == 3)
+        {
+            document.getElementById('question-box1').style.display = 'none'
+            document.getElementById('question-box2').style.display = 'none';
+            document.getElementById('question-box3').style.display = 'block';
+        }
+        
+    }
+
+    function back_mouse()
+    {
+        document.getElementById('back_button').style.fontWeight = 'bold';
+    }
+    function continue_mouse()
+    {
+        document.getElementById('continue_button').style.fontWeight = 'bold';
+    }
+    function back_out()
+    {
+        document.getElementById('back_button').style.fontWeight = 'normal';
+    }
+    function continue_out()
+    {
+        document.getElementById('continue_button').style.fontWeight = 'normal';
+    }
+
+    function q1answer1_click()
+    {
+        document.getElementById('q1answer1').style.backgroundColor = 'rgb(0, 96, 255)';
+        document.getElementById('q1answer1_para').style.color = 'white';
+        document.getElementById('q1answer2').style.backgroundColor = 'white';
+        document.getElementById('q1answer2_para').style.color = 'black';
+    }
+    function q1answer2_click()
+    {
+        document.getElementById('q1answer2').style.backgroundColor = 'rgb(0, 96, 255)';
+        document.getElementById('q1answer2_para').style.color = 'white';
+        document.getElementById('q1answer1').style.backgroundColor = 'white';
+        document.getElementById('q1answer1_para').style.color = 'black';
+    }
+
+    function q2answer1_click(){
+        document.getElementById('q2answer1_para').style.textDecoration = 'underline';
+        document.getElementById('q2answer2_para').style.textDecoration = 'none';
+        document.getElementById('q2answer3_para').style.textDecoration = 'none';
+        document.getElementById('q2answer4_para').style.textDecoration = 'none';
+    }
+    function q2answer2_click(){
+        document.getElementById('q2answer1_para').style.textDecoration = 'none';
+        document.getElementById('q2answer2_para').style.textDecoration = 'underline';
+        document.getElementById('q2answer3_para').style.textDecoration = 'none';
+        document.getElementById('q2answer4_para').style.textDecoration = 'none';
+    }
+    function q2answer3_click(){
+        document.getElementById('q2answer1_para').style.textDecoration = 'none';
+        document.getElementById('q2answer2_para').style.textDecoration = 'none';
+        document.getElementById('q2answer3_para').style.textDecoration = 'underline';
+        document.getElementById('q2answer4_para').style.textDecoration = 'none';
+    }
+    function q2answer4_click(){
+        document.getElementById('q2answer1_para').style.textDecoration = 'none';
+        document.getElementById('q2answer2_para').style.textDecoration = 'none';
+        document.getElementById('q2answer3_para').style.textDecoration = 'none';
+        document.getElementById('q2answer4_para').style.textDecoration = 'underline';
+    }
+
+    function q3answer1_click(){
+        document.getElementById('q3answer1_para').style.textDecoration = 'underline';
+        document.getElementById('q3answer2_para').style.textDecoration = 'none';
+        document.getElementById('q3answer3_para').style.textDecoration = 'none';
+    }
+    function q3answer2_click(){
+        document.getElementById('q3answer1_para').style.textDecoration = 'none';
+        document.getElementById('q3answer2_para').style.textDecoration = 'underline';
+        document.getElementById('q3answer3_para').style.textDecoration = 'none';
+    }
+    function q3answer3_click(){
+        document.getElementById('q3answer1_para').style.textDecoration = 'none';
+        document.getElementById('q3answer2_para').style.textDecoration = 'none';
+        document.getElementById('q3answer3_para').style.textDecoration = 'underline';
+    }
+
+    function q4a1p1_click()
+    {
+        document.getElementById('q4a1p1').style.backgroundColor = 'rgb(0, 96, 255)';
+        document.getElementById('q4a1p1').style.color = 'white';
+    }
+</script>
+
+
+<body>
+
+    <div id="title">
+        <h1 id="title-main">HOSPITAL MANAGEMENT SYSTEM</h1>
+    </div>
+
+    <!-- DO YOU WANT TO TAKE APPOINTMENT  -->
+    <div class="question-box" id="question-box1" style="display: block;">
+
+        <div class="question">
+
+            <p><strong>Do you want to take appointment?</strong></p>
+
+        </div>
+
+        <div class="answers">
+
+            <div id="q1answer1">
+                <a onclick="q1answer1_click()">
+                    <strong><p id="q1answer1_para">YES, For Me</p></strong>
+                </a>
+            </div>
+
+            <div id="q1answer2">
+                <a onclick="q1answer2_click()">
+                    <strong><p id="q1answer2_para">NO, For Another Person</p></strong>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- HAVE YOU PREVIOUSLY TAKEN APPOINTMENT -->
+    <div class="question-box" id="question-box4">
+
+        <div class="question">
+            <p><strong>HAVE YOU VISITED HOSPITAL BEFORE?</strong></p>
+        </div>
+
+        <div class="answers">
+            
+            <div id="q4answer1">
+                <div id="q4a1p1" onclick="q4a1p1_click()">
+                    <p id="q4a1p1_para"><strong>YES</strong></p>
+                </div>
+                <div id="q4a1p2" onclick="q4a1p2_click()">
+                    <p id="q4a1p2_para"><strong>NO</strong></p>
+                </div>
+            </div>
+
+            <div id="q4answer2">
+                <p><strong>Enter Your ID: </strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PERSONAL Information -->
+    <div class="question-box" id="question-box2" style="display: none;">
+
+        <div class="question">
+
+            <p><strong>Personal Information</strong></p>
+
+        </div>
+        
+        <div class="answers">
+            
+            <div id="q2answer1" onclick="q2answer1_click()">
+                <p id="q2answer1_para"><strong>First Name: </strong></p><br>
+                <input type="text" id="pfname" class="personal_details">
+            </div>
+
+            <div id="q2answer2" onclick="q2answer2_click()">
+                <p id="q2answer2_para"><strong>Last Name: </strong></p><br>
+                <input type="text" id="plname" class="personal_details">
+            </div>
+
+            <div id="q2answer3" onclick="q2answer3_click()">
+                <p id="q2answer3_para"><strong>Date of Birth: </strong></p><br>
+                <input type="date" id="pdob" class="personal_details">
+            </div>
+
+            <div id="q2answer4" onclick="q2answer4_click()">
+                <p id="q2answer4_para"><strong>Gender: </strong></p><br>
+                <select class="personal_details">
+                    <option id="gender-null"></option>
+                    <option id="gender-male">Male</option>
+                    <option id="gender-female">Female</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- HOW CAN WE CONTACT YOU -->
+    <div class="question-box" id="question-box3" style="display: none;">
+
+        <div class="question">
+
+            <p><strong>How can we contact you?</strong></p>
+
+        </div>
+
+        <div class="answers">
+            <div id="q3answer1" onclick="q3answer1_click()">
+                <p id="q3answer1_para"><strong>Phone: </strong></p><br>
+                <input type="text" id="cphone" class="personal_details" maxlength="10">
+            </div>
+
+            <div id="q3answer2" onclick="q3answer2_click()">
+                <p id="q3answer2_para"><strong>Email: </strong></p><br>
+                <input type="email" id="cphone" class="personal_details">
+            </div>
+
+            <div id="q3answer3" onclick="q3answer3_click()">
+                <p id="q3answer3_para"><strong>Address: </strong></p><br>
+                <textarea cols="35" rows="10" style="border: 1px solid black; resize: none; font-weight: bold;" class="personal-details"></textarea>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- BOTTOM BUTTONS -->
+    <div id="buttons">
+        <input type="button" class="bottom_buttons" value="<- Back" id="back_button" onmouseover="back_mouse()" onmouseout="back_out()" onclick="page_back()">
+        <input type="button" class="bottom_buttons" value="Continue ->" id="continue_button" onmouseover="continue_mouse()" onmouseout="continue_out()" onclick="page_cont()">
+    </div>
+
+</body>
+</html>
