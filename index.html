@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
 </head>
 
-
 <style>
     * {
         margin: 0px;
@@ -158,64 +157,134 @@
         margin-top: 210px;
         width: 328px;
         height: 210px;}
+
+    #q6answer1{
+        float: left;
+        width: 328px;
+        height: 104px;
+        border-bottom: 1px solid black;}
+    #q6answer2{
+        float: none;
+        margin-top: 104px;
+        width: 328px;
+        height: 104px;
+        border-bottom: 1px solid black;}
+    #q6answer3{
+        float: none;
+        
+        width: 328px;
+        height: 210px;}
+
+    .times{
+        display: inline;
+        font-weight: bold;
+        font-size: 20px;}
 </style>
 
 
 <script type="text/javascript">
-    var page_no=1;
-    function page_cont(){
-        page_no++;
-        console.log(page_no);
-        if(page_no <= 0 || page_no >= 6)
-        {
-            page_no = 1
-        }
+    var fname_err = 1;
+    var lname_err = 1;
+    var dob_error = 1;
+    var gender_err = 1;
 
-        if(page_no == 1)
+    
+
+    var page_no=1;
+    var patient_id = ['5342', '1000', '7313', '2345', '3456'];
+    var patient_fname = ['Arun', 'Pushkar', 'Ajay', 'Atul', 'Ramesh'];
+    var patient_lname = ['Prajapati', 'Patil', 'Sharma', 'Deshmukh', 'Nakamura'];
+    var patient_dob = ['2002-12-15', '1992-11-03', '1999-08-19', '2004-04-15', '2009-02-05'];
+    var patient_phone = ['9234728342', '9234787832', '8643314343', '8113263232', '9438287673'];
+    var patient_syntoms = ['High Fever', 'Low B12', 'Weakness', 'Head ache', 'Frequent Sneezing'];
+    var err_count = 500;
+    var pid_input;
+    var pid_index;
+    var patient_window;
+    var dob_input;
+
+    var valid_pid = /^[0-9]/;
+    var valid_fname = /^[a-zA-Z]+$/;
+    var valid_lname = /^[a-zA-Z]+$/;
+    var valid_phone = /^[0-9]{10}/;
+
+    function page_cont(){
+        console.log(page_no);
+        
+        if(err_count == 500)
         {
-            document.getElementById('question-box1').style.display = 'block'
-            document.getElementById('question-box2').style.display = 'none';
-            document.getElementById('question-box3').style.display = 'none';
-            document.getElementById('question-box4').style.display = 'none';
-            document.getElementById('question-box5').style.display = 'none';
+            document.getElementById('continue_button').disabled = true;
         }
-        else if(page_no == 2)
-        {
-            document.getElementById('question-box1').style.display = 'none'
-            document.getElementById('question-box2').style.display = 'none';
-            document.getElementById('question-box3').style.display = 'none';
-            document.getElementById('question-box4').style.display = 'block';
-            document.getElementById('question-box5').style.display = 'none';
-        }
-        else if(page_no == 3)
-        {
-            document.getElementById('question-box1').style.display = 'none'
-            document.getElementById('question-box2').style.display = 'block';
-            document.getElementById('question-box3').style.display = 'none';
-            document.getElementById('question-box4').style.display = 'none';
-            document.getElementById('question-box5').style.display = 'none';
-        }
-        else if(page_no == 4)
-        {
-            document.getElementById('question-box1').style.display = 'none'
-            document.getElementById('question-box2').style.display = 'none';
-            document.getElementById('question-box3').style.display = 'block';
-            document.getElementById('question-box4').style.display = 'none';
-            document.getElementById('question-box5').style.display = 'none';
-        }
-        else if(page_no == 5)
-        {
-            document.getElementById('question-box1').style.display = 'none'
-            document.getElementById('question-box2').style.display = 'none';
-            document.getElementById('question-box3').style.display = 'none';
-            document.getElementById('question-box4').style.display = 'none';
-            document.getElementById('question-box5').style.display = 'block';
-        }
-    }
+        else{
+            page_no++;
+            err_count = 500;
+            if(page_no <= 0 || page_no >= 7)
+            {
+                page_no = 1;
+            }
+
+            if(page_no == 1)
+            {
+                document.getElementById('question-box1').style.display = 'block'
+                document.getElementById('question-box2').style.display = 'none';
+                document.getElementById('question-box3').style.display = 'none';
+                document.getElementById('question-box4').style.display = 'none';
+                document.getElementById('question-box5').style.display = 'none';
+                document.getElementById('question-box6').style.display = 'none';
+            }
+            else if(page_no == 2)
+            {
+                document.getElementById('question-box1').style.display = 'none'
+                document.getElementById('question-box2').style.display = 'none';
+                document.getElementById('question-box3').style.display = 'none';
+                document.getElementById('question-box4').style.display = 'block';
+                document.getElementById('question-box5').style.display = 'none';
+                document.getElementById('question-box6').style.display = 'none';
+            }
+            else if(page_no == 3)
+            {
+                document.getElementById('question-box1').style.display = 'none'
+                document.getElementById('question-box2').style.display = 'block';
+                document.getElementById('question-box3').style.display = 'none';
+                document.getElementById('question-box4').style.display = 'none';
+                document.getElementById('question-box5').style.display = 'none';
+                document.getElementById('question-box6').style.display = 'none';
+                
+            }
+            else if(page_no == 4)
+            {
+                document.getElementById('question-box1').style.display = 'none'
+                document.getElementById('question-box2').style.display = 'none';
+                document.getElementById('question-box3').style.display = 'block';
+                document.getElementById('question-box4').style.display = 'none';
+                document.getElementById('question-box5').style.display = 'none';
+                document.getElementById('question-box6').style.display = 'none';
+            }
+            else if(page_no == 5)
+            {
+                document.getElementById('question-box1').style.display = 'none'
+                document.getElementById('question-box2').style.display = 'none';
+                document.getElementById('question-box3').style.display = 'none';
+                document.getElementById('question-box4').style.display = 'none';
+                document.getElementById('question-box5').style.display = 'block';
+                document.getElementById('question-box6').style.display = 'none';
+            }
+            else if(page_no == 6)
+            {
+                document.getElementById('question-box1').style.display = 'none'
+                document.getElementById('question-box2').style.display = 'none';
+                document.getElementById('question-box3').style.display = 'none';
+                document.getElementById('question-box4').style.display = 'none';
+                document.getElementById('question-box5').style.display = 'none';
+                document.getElementById('question-box6').style.display = 'block';
+            }
+        }}
+    
+    
     function page_back(){
         page_no--;
         console.log(page_no);
-        if(page_no <= 0 || page_no >= 6)
+        if(page_no <= 0 || page_no >= 7)
         {
             page_no = 1
         }
@@ -227,6 +296,7 @@
             document.getElementById('question-box3').style.display = 'none';
             document.getElementById('question-box4').style.display = 'none';
             document.getElementById('question-box5').style.display = 'none';
+            document.getElementById('question-box6').style.display = 'none';
         }
         else if(page_no == 2)
         {
@@ -235,6 +305,7 @@
             document.getElementById('question-box3').style.display = 'none';
             document.getElementById('question-box4').style.display = 'block';
             document.getElementById('question-box5').style.display = 'none';
+            document.getElementById('question-box6').style.display = 'none';
         }
         else if(page_no == 3)
         {
@@ -243,6 +314,8 @@
             document.getElementById('question-box3').style.display = 'none';
             document.getElementById('question-box4').style.display = 'none';
             document.getElementById('question-box5').style.display = 'none';
+            document.getElementById('question-box6').style.display = 'none';
+            
         }
         else if(page_no == 4)
         {
@@ -251,6 +324,7 @@
             document.getElementById('question-box3').style.display = 'block';
             document.getElementById('question-box4').style.display = 'none';
             document.getElementById('question-box5').style.display = 'none';
+            document.getElementById('question-box6').style.display = 'none';
         }
         else if(page_no == 5)
         {
@@ -259,6 +333,16 @@
             document.getElementById('question-box3').style.display = 'none';
             document.getElementById('question-box4').style.display = 'none';
             document.getElementById('question-box5').style.display = 'block';
+            document.getElementById('question-box6').style.display = 'none';
+        }
+        else if(page_no == 6)
+        {
+            document.getElementById('question-box1').style.display = 'none'
+            document.getElementById('question-box2').style.display = 'none';
+            document.getElementById('question-box3').style.display = 'none';
+            document.getElementById('question-box4').style.display = 'none';
+            document.getElementById('question-box5').style.display = 'none';
+            document.getElementById('question-box6').style.display = 'block';
         }
         
     }
@@ -286,6 +370,8 @@
         document.getElementById('q1answer1_para').style.color = 'white';
         document.getElementById('q1answer2').style.backgroundColor = 'white';
         document.getElementById('q1answer2_para').style.color = 'black';
+        err_count = 0;
+        document.getElementById('continue_button').disabled = false;
     }
     function q1answer2_click()
     {
@@ -293,6 +379,8 @@
         document.getElementById('q1answer2_para').style.color = 'white';
         document.getElementById('q1answer1').style.backgroundColor = 'white';
         document.getElementById('q1answer1_para').style.color = 'black';
+        err_count = 0;
+        document.getElementById('continue_button').disabled = false;
     }
 
     function q2answer1_click(){
@@ -320,6 +408,85 @@
         document.getElementById('q2answer4_para').style.textDecoration = 'underline';
     }
 
+    function check_fname()
+    {
+        fname_input = document.getElementById('pfname').value;
+        if(valid_fname.test(fname_input))
+        {
+            fname_err = 0;
+        }
+        else
+        {
+            fname_err = 1
+        }
+        
+        if(fname_err == 0 && lname_err == 0 && dob_error == 0 && gender_err == 0)
+        {
+            err_count = 0;
+            document.getElementById('continue_button').disabled = false;
+        }
+        else
+        {
+            err_count = 500;
+        }
+    }
+    function check_lname()
+    {
+        lname_input = document.getElementById("plname").value;
+        if(valid_lname.test(lname_input))
+        {
+            lname_err = 0;
+        }
+        else{
+            lname_err = 1;
+        }
+        if(fname_err == 0 && lname_err == 0 && dob_error == 0 && gender_err == 0)
+        {
+            err_count = 0;
+            document.getElementById('continue_button').disabled = false;
+        }
+        else
+        {
+            err_count = 500;
+        }
+    }
+    function check_dob()
+    {
+        dob_input = document.getElementById('pdob').value; 
+        dob_error = 0;
+        if(fname_err == 0 && lname_err == 0 && dob_error == 0 && gender_err == 0)
+        {
+            err_count = 0;
+            document.getElementById('continue_button').disabled = false;
+        }
+        else
+        {
+            err_count = 500;
+        }
+    }
+    function check_gender()
+    {
+        gender_input = document.getElementById('pgender').value;
+        if(gender_input == "")
+        {
+            gender_err = 1;
+        }
+        else
+        {
+            gender_err = 0;
+        }
+        
+        if(fname_err == 0 && lname_err == 0 && dob_error == 0 && gender_err == 0)
+        {
+            err_count = 0;
+            document.getElementById('continue_button').disabled = false;
+        }
+        else
+        {
+            err_count = 500;
+        }
+    }
+
     function q3answer1_click(){
         document.getElementById('q3answer1_para').style.textDecoration = 'underline';
         document.getElementById('q3answer2_para').style.textDecoration = 'none';
@@ -343,6 +510,7 @@
         document.getElementById('q4a1p2').style.backgroundColor = 'white';
         document.getElementById('q4a1p2').style.color = 'black';
         document.getElementById('q4answer2').style.display = 'block';
+        err_count = 500;
     }
     function q4a1p2_click()
     {
@@ -350,7 +518,40 @@
         document.getElementById('q4a1p1').style.color = 'black';
         document.getElementById('q4a1p2').style.backgroundColor = 'rgb(0, 96, 255)';
         document.getElementById('q4a1p2').style.color = 'white';
-        document.getElementById('q4answer2').style.display = 'none'
+        document.getElementById('q4answer2').style.display = 'none';
+        err_count = 0;
+        document.getElementById('continue_button').disabled = false;
+    }
+
+    function check_id()
+    {
+        pid_input = document.getElementById('pid').value;
+        pid_index = patient_id.indexOf(pid_input);
+        if(pid_index == -1){
+            err_count = 250;
+        }
+        else{
+            err_count = 500;
+        }
+    }
+    function pid_get()
+    {
+        if(err_count == 250)
+        {
+            alert("INVALID ID!")
+        }
+        else
+        {
+            patient_window = window.open("","","height=200, width=500, top=200, left=200");
+            patient_window.document.write("<h1 style='text-align:center'>"+ patient_id[pid_index] +"</h1>");
+            patient_window.document.write("Name: " + patient_fname[pid_index] + " " + patient_lname[pid_index] + "<br>");
+            patient_window.document.write("DOB: " + patient_dob[pid_index] + '<br>');
+            patient_window.document.write("Phone: " + patient_phone[pid_index] + '<br>');
+            patient_window.document.write("Syntoms: " + patient_syntoms[pid_index]);
+            page_no = 4;
+            err_count = 0;
+            document.getElementById('continue_button').disabled = false;
+        }
     }
 
     function q5answer1_click(){
@@ -361,8 +562,24 @@
         document.getElementById('q5answer2_para').style.textDecoration = 'underline';
         document.getElementById('q5answer1_para').style.textDecoration = 'none';
     }
-</script>
 
+    function q6answer1_click(){
+        document.getElementById('q6answer1_para').style.textDecoration = 'underline';
+        document.getElementById('q6answer2_para').style.textDecoration = 'none';
+        document.getElementById('q6answer3_para').style.textDecoration = 'none';
+    }
+    function q6answer2_click(){
+        document.getElementById('q6answer1_para').style.textDecoration = 'none';
+        document.getElementById('q6answer2_para').style.textDecoration = 'underline';
+        document.getElementById('q6answer3_para').style.textDecoration = 'none';
+    }
+    function q6answer3_click(){
+        document.getElementById('q6answer1_para').style.textDecoration = 'none';
+        document.getElementById('q6answer2_para').style.textDecoration = 'none';
+        document.getElementById('q6answer3_para').style.textDecoration = 'underline';
+    }
+
+</script>
 
 <body>
 
@@ -418,7 +635,8 @@
             <div id="q4answer2" style="display: none;">
                 <br>
                 <p><strong>Enter Your ID: </strong></p><br>
-                <input type="text" class="personal_details" id="pid" style="width: 50px;" maxlength="4">
+                <input type="text" class="personal_details" id="pid" style="width: 50px;" maxlength="4" onkeyup="check_id()"><br><br>
+                <button class="personal_details" id="pid_show" onclick="pid_get()">SHOW</button>
             </div>
         </div>
     </div>
@@ -436,22 +654,22 @@
             
             <div id="q2answer1" onclick="q2answer1_click()">
                 <p id="q2answer1_para"><strong>First Name: </strong></p><br>
-                <input type="text" id="pfname" class="personal_details">
+                <input type="text" id="pfname" class="personal_details" onkeyup="check_fname()">
             </div>
 
             <div id="q2answer2" onclick="q2answer2_click()">
                 <p id="q2answer2_para"><strong>Last Name: </strong></p><br>
-                <input type="text" id="plname" class="personal_details">
+                <input type="text" id="plname" class="personal_details" onkeyup="check_lname()">
             </div>
 
             <div id="q2answer3" onclick="q2answer3_click()">
                 <p id="q2answer3_para"><strong>Date of Birth: </strong></p><br>
-                <input type="date" id="pdob" class="personal_details">
+                <input type="date" id="pdob" class="personal_details" onchange="check_dob()">
             </div>
 
             <div id="q2answer4" onclick="q2answer4_click()">
                 <p id="q2answer4_para"><strong>Gender: </strong></p><br>
-                <select class="personal_details">
+                <select class="personal_details" id="pgender" onchange="check_gender()">
                     <option id="gender-null"></option>
                     <option id="gender-male">Male</option>
                     <option id="gender-female">Female</option>
@@ -472,22 +690,22 @@
         <div class="answers">
             <div id="q3answer1" onclick="q3answer1_click()">
                 <p id="q3answer1_para"><strong>Phone: </strong></p><br>
-                <input type="text" id="cphone" class="personal_details" maxlength="10">
+                <input type="text" id="pphone" class="personal_details" maxlength="10">
             </div>
 
             <div id="q3answer2" onclick="q3answer2_click()">
                 <p id="q3answer2_para"><strong>Email: </strong></p><br>
-                <input type="email" id="cphone" class="personal_details">
+                <input type="email" id="pemail" class="personal_details">
             </div>
 
             <div id="q3answer3" onclick="q3answer3_click()">
-                <p id="q3answer3_para"><strong>Address: </strong></p><br>
+                <p id="q3answer3_para"><strong>Address: (<i>Optional </i>)</strong></p><br>
                 <textarea cols="35" rows="10" style="border: 1px solid black; resize: none; font-weight: bold;" class="personal-details"></textarea>
             </div>
         </div>
     </div>
 
-    <!-- Syntoms and More info -->
+    <!-- SYNTOMS AND INFO -->
     <div class="question-box" id="question-box5" style="display: none;">
         <div class="question">
             <p><strong>More About Your Disease: </strong></p>
@@ -505,14 +723,47 @@
         </div>
     </div>
 
+    <!-- DATE FOR APPOINTMENT -->
+    <div class="question-box" id="question-box6" style="display: none;">
+        <div class="question">
+            <p><strong>APPOINTMENT DETAILS: </strong></p>
+        </div>
 
-
-
-
-
-
-
-
+        <div class="answers">
+            <div id="q6answer1" onclick="q6answer1_click()">
+                <p id="q6answer1_para"><strong>Select Doctor:</strong></p><br>
+                <select id="doc_names" class="personal_details">
+                    <option></option>
+                    <option>DR. Mishra</option>
+                    <option>DR. Sharma</option>
+                    <option>DR. Kulkerni</option>
+                    <option>DR. Kumawat</option>
+                    <option>DR. Patil</option>
+                </select>
+            </div>
+            <div id="q6answer2" onclick="q6answer2_click()">
+                <p id="q6answer2_para"><strong>Select Date:</strong></p><br>
+                <select id="doc_dates" class="personal_details">
+                    <option></option>
+                    <option>12 - 12 - 2022</option>
+                    <option>13 - 12 - 2022</option>
+                    <option>14 - 12 - 2022</option>
+                    <option>15 - 12 - 2022</option>
+                    <option>16 - 12 - 2022</option>
+                    <option>17 - 12 - 2022</option>
+                </select>
+            </div>
+            <div id="q6answer3" onclick="q6answer3_click()">
+                <p id="q6answer3_para"><strong>Select Time:</strong></p><br>
+                <input type="radio" id="time_slot1" name="doc_time"><p class="times"> 10.00 - 12.00</p><br>
+                <input type="radio" id="time_slot2" name="doc_time"><p class="times"> 12.00 - 14.00</p><br>
+                <input type="radio" id="time_slot3" name="doc_time"><p class="times"> 14.00 - 16.00</p><br>
+                <input type="radio" id="time_slot4" name="doc_time"><p class="times"> 16.00 - 18.00</p><br>
+                <input type="radio" id="time_slot5" name="doc_time"><p class="times"> 18.00 - 20.00</p><br>
+                <input type="radio" id="time_slot6" name="doc_time"><p class="times"> 20.00 - 22.00</p><br>
+            </div>
+        </div>
+    </div>
 
     <!-- BOTTOM BUTTONS -->
     <div id="buttons">
