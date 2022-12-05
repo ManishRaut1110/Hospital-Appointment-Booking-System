@@ -187,8 +187,13 @@
     var lname_err = 1;
     var dob_error = 1;
     var gender_err = 1;
-
-    
+    var phone_err = 1;
+    var email_err = 1;
+    var syntoms_err = 1;
+    var describe_err = 1;
+    var doc_err = 1;
+    var date_err = 1;
+    var time_err = 1;
 
     var page_no=1;
     var patient_id = ['5342', '1000', '7313', '2345', '3456'];
@@ -198,18 +203,27 @@
     var patient_phone = ['9234728342', '9234787832', '8643314343', '8113263232', '9438287673'];
     var patient_syntoms = ['High Fever', 'Low B12', 'Weakness', 'Head ache', 'Frequent Sneezing'];
     var err_count = 500;
+    var patient_window;
+
     var pid_input;
     var pid_index;
-    var patient_window;
     var dob_input;
+    var phone_input;
+    var email_input;
+    var syntoms_input;
+    var describe_input;
+    var syntoms_input;
+    var doc_input;
+    var date_input;
+    var time_input;
 
     var valid_pid = /^[0-9]/;
     var valid_fname = /^[a-zA-Z]+$/;
     var valid_lname = /^[a-zA-Z]+$/;
     var valid_phone = /^[0-9]{10}/;
+    var valid_email = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
     function page_cont(){
-        console.log(page_no);
         
         if(err_count == 500)
         {
@@ -218,7 +232,7 @@
         else{
             page_no++;
             err_count = 500;
-            if(page_no <= 0 || page_no >= 7)
+            if(page_no <= 0 || page_no >= 8)
             {
                 page_no = 1;
             }
@@ -278,7 +292,19 @@
                 document.getElementById('question-box5').style.display = 'none';
                 document.getElementById('question-box6').style.display = 'block';
             }
-        }}
+            else if(page_no == 7)
+            {
+                document.getElementById('question-box1').style.display = 'none'
+                document.getElementById('question-box2').style.display = 'none';
+                document.getElementById('question-box3').style.display = 'none';
+                document.getElementById('question-box4').style.display = 'none';
+                document.getElementById('question-box5').style.display = 'none';
+                document.getElementById('question-box6').style.display = 'none';
+                document.getElementById('buttons').style.display = 'none';
+                document.getElementById('title-main').innerHTML = "APPOINTMENT BOOKED SUCCESSFULLY"
+            }
+        }
+    }
     
     
     function page_back(){
@@ -503,6 +529,51 @@
         document.getElementById('q3answer3_para').style.textDecoration = 'underline';
     }
 
+    function check_phone()
+    {
+        phone_input = document.getElementById('pphone').value;
+        if(valid_phone.test(phone_input))
+        {
+            phone_err = 0;
+        }
+        else
+        {
+            phone_err = 1;
+        }
+        console.log(phone_err);
+        if(email_err == 0 && phone_err == 0)
+        {
+            err_count = 0;
+            document.getElementById('continue_button').displayed = false;
+        }
+        else
+        {
+            err_count = 500;
+        }
+    }
+    function check_email()
+    {
+        email_input = document.getElementById('pemail').value;
+        if(valid_email.test(email_input))
+        {
+            email_err = 0;
+        }
+        else
+        {
+            email_err = 1;
+        }
+        console.log(email_err);
+        if(email_err == 0 && phone_err == 0)
+        {
+            err_count = 0;
+            document.getElementById('continue_button').displayed = false;
+        }
+        else
+        {
+            err_count = 500;
+        }
+    }
+
     function q4a1p1_click()
     {
         document.getElementById('q4a1p1').style.backgroundColor = 'rgb(0, 96, 255)';
@@ -521,6 +592,47 @@
         document.getElementById('q4answer2').style.display = 'none';
         err_count = 0;
         document.getElementById('continue_button').disabled = false;
+    }
+
+    function check_syntoms(){
+        syntoms_input = document.getElementById('psyntoms').value;
+        if(syntoms_input == "")
+        {
+            syntoms_err = 1;
+        }
+        else
+        {
+            syntoms_err = 0;
+        }
+
+        if(syntoms_err==0 && describe_err==0)
+        {
+            err_count = 0;
+            document.getElementById('continue_button').disabled = false;
+        }
+        else{
+            err_count = 500;
+        }
+    }
+    function check_describe(){
+        describe_input = document.getElementById('pdescribe').value;
+        if(describe_input == "")
+        {
+            describe_err = 1;
+        }
+        else
+        {
+            describe_err = 0;
+        }
+
+        if(syntoms_err==0 && describe_err==0)
+        {
+            err_count = 0;
+            document.getElementById('continue_button').disabled = false;
+        }
+        else{
+            err_count = 500;
+        }
     }
 
     function check_id()
@@ -579,6 +691,67 @@
         document.getElementById('q6answer3_para').style.textDecoration = 'underline';
     }
 
+    function check_doc(){
+        doc_input = document.getElementById('pdoc').value;
+        if(doc_input == "")
+        {
+            doc_err = 1;
+        }
+        else
+        {
+            doc_err = 0;
+        }
+        if(doc_err == 0 && date_err == 0 && time_err == 0)
+        {
+            err_count = 0;
+            document.getElementById('continue_button').disabled = false;
+        }
+        else
+        {
+            err_count = 500;
+        }
+    }
+    function check_date(){
+        date_input = document.getElementById('pdate').value;
+        if(date_input == "")
+        {
+            date_err = 1;
+        }
+        else
+        {
+            date_err = 0;
+        }
+        if(doc_err == 0 && date_err == 0 && time_err == 0)
+        {
+            err_count = 0;
+            document.getElementById('continue_button').disabled = false;
+        }
+        else
+        {
+            err_count = 500;
+        }
+    }
+    function check_time(){
+        if(document.getElementById('time_slot1').checked == true || document.getElementById('time_slot2').checked == true || document.getElementById('time_slot3').checked == true || document.getElementById('time_slot4').checked == true || document.getElementById('time_slot5').checked == true || document.getElementById('time_slot6').checked == true)
+        {
+            console.log(time_err);
+            time_err = 0;
+        }
+        else
+        {
+            time_err = 1;
+        }
+
+        if(doc_err == 0 && date_err == 0 && time_err == 0)
+        {
+            err_count = 0;
+            document.getElementById('continue_button').disabled = false;
+        }
+        else
+        {
+            err_count = 500;
+        }
+    }
 </script>
 
 <body>
@@ -690,12 +863,12 @@
         <div class="answers">
             <div id="q3answer1" onclick="q3answer1_click()">
                 <p id="q3answer1_para"><strong>Phone: </strong></p><br>
-                <input type="text" id="pphone" class="personal_details" maxlength="10">
+                <input type="text" id="pphone" class="personal_details" maxlength="10" onkeyup="check_phone()">
             </div>
 
             <div id="q3answer2" onclick="q3answer2_click()">
                 <p id="q3answer2_para"><strong>Email: </strong></p><br>
-                <input type="email" id="pemail" class="personal_details">
+                <input type="email" id="pemail" class="personal_details" onkeyup="check_email()">
             </div>
 
             <div id="q3answer3" onclick="q3answer3_click()">
@@ -713,12 +886,12 @@
 
         <div class="answers">
             <div id="q5answer1" onclick="q5answer1_click()">
-                <p id="q5answer1_para"><strong>Enter your Syntoms(any 3):</strong></p><br>
-                <textarea cols="35" rows="10" style="border: 1px solid black; resize: none; font-weight: bold;" class="personal-details"></textarea>
+                <p id="q5answer1_para"><strong>Enter your Syntoms:</strong></p><br>
+                <textarea cols="35" id="psyntoms" rows="10" style="border: 1px solid black; resize: none; font-weight: bold;" class="personal-details" onkeyup="check_syntoms()"></textarea>
             </div>
             <div id="q5answer2" onclick="q5answer2_click()">
                 <p id="q5answer2_para"><strong>Describe your Disease:</strong></p><br>
-                <textarea cols="35" rows="10" style="border: 1px solid black; resize: none; font-weight: bold;" class="personal-details"></textarea>
+                <textarea cols="35" id="pdescribe" rows="10" style="border: 1px solid black; resize: none; font-weight: bold;" class="personal-details" onkeyup="check_describe()"></textarea>
             </div>
         </div>
     </div>
@@ -732,7 +905,7 @@
         <div class="answers">
             <div id="q6answer1" onclick="q6answer1_click()">
                 <p id="q6answer1_para"><strong>Select Doctor:</strong></p><br>
-                <select id="doc_names" class="personal_details">
+                <select id="pdoc" class="personal_details" onclick="check_doc()">
                     <option></option>
                     <option>DR. Mishra</option>
                     <option>DR. Sharma</option>
@@ -743,7 +916,7 @@
             </div>
             <div id="q6answer2" onclick="q6answer2_click()">
                 <p id="q6answer2_para"><strong>Select Date:</strong></p><br>
-                <select id="doc_dates" class="personal_details">
+                <select id="pdate" class="personal_details" onclick="check_date()">
                     <option></option>
                     <option>12 - 12 - 2022</option>
                     <option>13 - 12 - 2022</option>
@@ -755,12 +928,12 @@
             </div>
             <div id="q6answer3" onclick="q6answer3_click()">
                 <p id="q6answer3_para"><strong>Select Time:</strong></p><br>
-                <input type="radio" id="time_slot1" name="doc_time"><p class="times"> 10.00 - 12.00</p><br>
-                <input type="radio" id="time_slot2" name="doc_time"><p class="times"> 12.00 - 14.00</p><br>
-                <input type="radio" id="time_slot3" name="doc_time"><p class="times"> 14.00 - 16.00</p><br>
-                <input type="radio" id="time_slot4" name="doc_time"><p class="times"> 16.00 - 18.00</p><br>
-                <input type="radio" id="time_slot5" name="doc_time"><p class="times"> 18.00 - 20.00</p><br>
-                <input type="radio" id="time_slot6" name="doc_time"><p class="times"> 20.00 - 22.00</p><br>
+                <input type="radio" id="time_slot1" name="doc_time"><p class="times" onclick="check_time()"> 10.00 - 12.00</p><br>
+                <input type="radio" id="time_slot2" name="doc_time"><p class="times" onclick="check_time()"> 12.00 - 14.00</p><br>
+                <input type="radio" id="time_slot3" name="doc_time"><p class="times" onclick="check_time()"> 14.00 - 16.00</p><br>
+                <input type="radio" id="time_slot4" name="doc_time"><p class="times" onclick="check_time()"> 16.00 - 18.00</p><br>
+                <input type="radio" id="time_slot5" name="doc_time"><p class="times" onclick="check_time()"> 18.00 - 20.00</p><br>
+                <input type="radio" id="time_slot6" name="doc_time"><p class="times" onclick="check_time()"> 20.00 - 22.00</p><br>
             </div>
         </div>
     </div>
@@ -773,3 +946,4 @@
 
 </body>
 </html>
+
